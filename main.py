@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import requests
-from operator import getitem
 
 data = requests.get(url = "https://launchpad.binance.com/gateway-api/v1/public/launchpool/project/list", headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36'
