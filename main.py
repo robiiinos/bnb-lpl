@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# pylint: disable=missing-module-docstring,missing-class-docstring,missing-function-docstring,line-too-long
 
 import requests
 
@@ -10,12 +11,12 @@ data = requests.get(url = "https://launchpad.binance.com/gateway-api/v1/public/l
 assetsDict = dict()
 assetsSet = set()
 for project in data['data']['tracking']['list']:
-  assetsDict[project['projectId']] = dict(project)
-  assetsSet.add(project['asset'])
+    assetsDict[project['projectId']] = dict(project)
+    assetsSet.add(project['asset'])
 
 userAsset = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet))))
 
 # Filter the dict based on user input, sort it by highest yield, and print results.
 projectsDict = dict(filter(lambda elem: elem[1]['asset'] == userAsset, assetsDict.items()))
 for (userProject, userProjectValue) in sorted(projectsDict.items(), key = lambda x: x[1]['annualRate'], reverse=True):
-  print('{} with {}% APY'.format(userProject, round(float(userProjectValue['annualRate']) * 100, 2)))
+    print('{} with {}% APY'.format(userProject, round(float(userProjectValue['annualRate']) * 100, 2)))
