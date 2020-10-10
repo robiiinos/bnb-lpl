@@ -10,15 +10,12 @@ data = requests.get(url = "https://launchpad.binance.com/gateway-api/v1/public/l
 assetsDict = dict()
 assetsSet = set()
 for project in data['data']['tracking']['list']:
-  assetsDict[project['projectId']] = dict()
-  assetsDict[project['projectId']]['projectId'] = project['projectId']
-  assetsDict[project['projectId']]['asset'] = project['asset']
-  assetsDict[project['projectId']]['yield'] = project['annualRate']
+  assetsDict[project['projectId']] = dict(project)
   assetsSet.add(project['asset'])
 
 userAsset = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet))))
 
 # Filter the dict based on user input, sort it by highest yield, and print results.
 projectsDict = dict(filter(lambda elem: elem[1]['asset'] == userAsset, assetsDict.items()))
-for (userProject, userProjectValue) in sorted(projectsDict.items(), key = lambda x: x[1]['yield'], reverse=True):
-  print('{} with {}% APY'.format(userProject, round(float(userProjectValue['yield']) * 100, 2)))
+for (userProject, userProjectValue) in sorted(projectsDict.items(), key = lambda x: x[1]['annualRate'], reverse=True):
+  print('{} with {}% APY'.format(userProject, round(float(userProjectValue['annualRate']) * 100, 2)))
