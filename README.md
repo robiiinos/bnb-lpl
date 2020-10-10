@@ -2,6 +2,10 @@
 
 **bnb-lpl** helps you find the highest yield for a specific asset, on [Binance Launchpool](https://launchpad.binance.com/en/tab3).
 
+## Requirements
+
+- Python 3.x
+
 ## Usage
 
 ```shell script
