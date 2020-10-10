@@ -18,10 +18,7 @@ for project in data['data']['tracking']['list']:
 
 userAsset = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet))))
 
-projectsDict = dict()
-for (key, value) in assetsDict.items():
-   if value['asset'] == userAsset:
-       projectsDict[value['projectId']] = value
-
+# Filter the dict based on user input, sort it by highest yield, and print results.
+projectsDict = dict(filter(lambda elem: elem[1]['asset'] == userAsset, assetsDict.items()))
 for (userProject, userProjectValue) in sorted(projectsDict.items(), key = lambda x: x[1]['yield'], reverse=True):
   print('{} with {}% APY'.format(userProject, round(float(userProjectValue['yield']) * 100, 2)))
