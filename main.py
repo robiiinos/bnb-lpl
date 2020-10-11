@@ -14,14 +14,17 @@ for project in data["data"]["tracking"]["list"]:
     assetsDict[project["projectId"]] = dict(project)
     assetsSet.add(project["asset"])
 
-assetInput = ""
-while assetInput.upper() not in assetsSet:
-    assetInput = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet)))) or "BNB"
+ASSET_INPUT = ""
+while ASSET_INPUT.upper() not in assetsSet:
+    ASSET_INPUT = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet)))) or "BNB"
 
     # Filter the dict based on user input, sort it by highest yield, and print results.
     projectsDict = sorted(assetsDict.items(), key=lambda x: x[1]["annualRate"], reverse=True)
-    for index, (projectKey, projectValue) in enumerate(projectsDict):
-        if projectValue["asset"] == assetInput.upper():
+
+    index = 1
+    for (projectKey, projectValue) in projectsDict:
+        if projectValue["asset"] == ASSET_INPUT.upper():
             name = projectKey.split("_")[0]
             apy = round(float(projectValue["annualRate"]) * 100, 2)
-            print("{}. {} with {}% APY".format(index + 1, name, apy))
+            print("{}. {} with {}% APY".format(index, name, apy))
+            index += 1
