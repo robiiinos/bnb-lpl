@@ -14,7 +14,7 @@ for project in data["data"]["tracking"]["list"]:
     assetsDict[project["projectId"]] = dict(project)
     assetsSet.add(project["asset"])
 
-assetInput = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet))))
+assetInput = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet)))) or "BNB"
 
 # Filter the dict based on user input, sort it by highest yield, and print results.
 projectsDict = sorted(assetsDict.items(), key=lambda x: x[1]["annualRate"], reverse=True)
