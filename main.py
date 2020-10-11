@@ -21,10 +21,10 @@ while ASSET_INPUT.upper() not in assetsSet:
     # Filter the dict based on user input, sort it by highest yield, and print results.
     projectsDict = sorted(assetsDict.items(), key=lambda x: x[1]["annualRate"], reverse=True)
 
-    index = 1
+    INDEX = 1
     for (projectKey, projectValue) in projectsDict:
         if projectValue["asset"] == ASSET_INPUT.upper():
             name = projectKey.split("_")[0]
             apy = round(float(projectValue["annualRate"]) * 100, 2)
-            print("{}. {} with {}% APY".format(index, name, apy))
-            index += 1
+            print("{}. {} with {}% APY".format(INDEX, name, apy))
+            INDEX += 1
