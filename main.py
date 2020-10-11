@@ -19,7 +19,7 @@ assetInput = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet)
 # Filter the dict based on user input, sort it by highest yield, and print results.
 projectsDict = sorted(assetsDict.items(), key=lambda x: x[1]["annualRate"], reverse=True)
 for index, (projectKey, projectValue) in enumerate(projectsDict):
-    if projectValue["asset"] == assetInput:
+    if projectValue["asset"] == assetInput.upper():
         name = projectKey.split("_")[0]
         apy = round(float(projectValue["annualRate"]) * 100, 2)
         print("{}. {} with {}% APY".format(index + 1, name, apy))
