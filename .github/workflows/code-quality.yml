@@ -30,7 +30,7 @@ jobs:
         pip install pylint
 
     - name: Lint
-      run: pylint *.py
+      run: pylint *.py --disable=missing-module-docstring,missing-class-docstring,missing-function-docstring
 
   pycodestyle:
 
@@ -55,4 +55,4 @@ jobs:
         pip install pycodestyle
 
     - name: Codestyle
-      run: pycodestyle *.py --ignore=E501
+      run: pycodestyle *.py
