@@ -1,7 +1,8 @@
 # bnb-lpl
 
-[![Python version](https://img.shields.io/badge/Python-3.x-informational)](https://www.python.org/downloads/)
-[![Run on Repl.it](https://repl.it/badge/github/robiiinos/bnb-lpl)](https://repl.it/github/robiiinos/bnb-lpl)
+[![Python version](https://img.shields.io/static/v1?label=Python&message=3.x&color=informational&style=flat-square)](https://www.python.org/downloads/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/robiiinos/bnb-lpl?color=informational&style=flat-square)](https://github.com/robiiinos/bnb-lpl/releases)
+[![Run on Repl.it](https://img.shields.io/static/v1?label=Run%20on&message=Repl.it&color=lightgrey&style=flat-square&logo=repl.it)](https://repl.it/github/robiiinos/bnb-lpl)
 
 **bnb-lpl** helps you find the highest yield for a specific asset on [Binance Launchpool](https://launchpad.binance.com/en/tab3).
 
