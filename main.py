@@ -30,11 +30,12 @@ while ASSET_INPUT.upper() not in assetsSet:
     # 1. Filter the dict based on user input
     # 2. Sort the dict by highest yield
     projectsDict = filter(
-        lambda elem: elem[1]['asset'] == ASSET_INPUT,
+        lambda elem: elem[1]["asset"] == ASSET_INPUT,
         sorted(
             assetsDict.items(),
-            key=lambda x: x[1]["annualRate"],
-            reverse=True)
+            key=lambda elem: elem[1]["annualRate"],
+            reverse=True
+        )
     )
 
     # Print results.
