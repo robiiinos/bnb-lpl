@@ -2,9 +2,11 @@
 # pylint: disable=missing-module-docstring,missing-class-docstring,missing-function-docstring,line-too-long
 
 import requests
+import shadow_useragent
 
 data = requests.get(url="https://launchpad.binance.com/gateway-api/v1/public/launchpool/project/list", headers={
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+    "Accept": "application/json",
+    "User-Agent": shadow_useragent.ShadowUserAgent().most_common
 }).json()
 
 # Get the assets for which a Launchpool is currently in progress.
