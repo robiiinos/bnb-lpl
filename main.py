@@ -19,13 +19,12 @@ while ASSET_INPUT.upper() not in assetsSet:
     ASSET_INPUT = input("Select your asset ({}): ".format(", ".join(sorted(assetsSet)))) or "BNB"
 
     # Filter the dict based on user input, sort it by highest yield, and print results.
-    projectsDict = filter(lambda elem: elem[1]['asset'] == ASSET_INPUT, 
+    projectsDict = filter(
+        lambda elem: elem[1]['asset'] == ASSET_INPUT,
         sorted(assetsDict.items(), key=lambda x: x[1]["annualRate"], reverse=True)
     )
 
-    INDEX = 1
-    for (projectKey, projectValue) in projectsDict:
-        name = projectKey.split("_")[0]
-        apy = round(float(projectValue["annualRate"]) * 100, 2)
-        print("{}. {} with {}% APY".format(INDEX, name, apy))
-        INDEX += 1
+    for index, key in enumerate(projectsDict):
+        name = key[0].split("_")[0]
+        apy = round(float(key[1]["annualRate"]) * 100, 2)
+        print("{}. {} with {}% APY".format(index, name, apy))
