@@ -29,4 +29,4 @@ while ASSET_INPUT.upper() not in assetsSet:
     for index, key in enumerate(projectsDict):
         name = key[0].split("_")[0]
         apy = round(float(key[1]["annualRate"]) * 100, 2)
-        print("{}. {} with {}% APY".format(index, name, apy))
+        print("{}. {} with {}% APY".format(index + 1, name, apy))
