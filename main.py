@@ -14,7 +14,7 @@ data = requests.get(
 
 # Filter projects that are available (aka "MINING"), with an annual rate (APY).
 projects = filter(
-    lambda elem: elem["status"] == "MINING" and elem["annualRate"] != None,
+    lambda elem: elem["status"] == "MINING" and elem["annualRate"] is not None,
     data["data"]["tracking"]["list"]
 )
 
@@ -28,7 +28,8 @@ for project in projects:
 ASSET_INPUT = ""
 while ASSET_INPUT.upper() not in assetsSet:
     # Fetch user input for asset, and set default if none.
-    ASSET_INPUT = input("Select your asset ({}): ".format(
+    ASSET_INPUT = input(
+        "Select your asset ({}): ".format(
             ", ".join(sorted(assetsSet))
         )
     ) or "BNB"
