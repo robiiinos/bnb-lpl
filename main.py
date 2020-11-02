@@ -12,10 +12,16 @@ data = requests.get(
     }
 ).json()
 
-# Get the assets for which a Launchpool is currently in progress.
+# Filter projects that are available (aka "MINING"), with an annual rate (APY).
+projects = filter(
+    lambda elem: elem["status"] == "MINING" and elem["annualRate"] != None,
+    data["data"]["tracking"]["list"]
+)
+
+# Get assets for which a Launchpool is currently in progress.
 assetsDict = dict()
 assetsSet = set()
-for project in data["data"]["tracking"]["list"]:
+for project in projects:
     assetsDict[project["projectId"]] = dict(project)
     assetsSet.add(project["asset"])
 
@@ -27,8 +33,8 @@ while ASSET_INPUT.upper() not in assetsSet:
         )
     ) or "BNB"
 
-    # 1. Filter the dict based on user input
-    # 2. Sort the dict by highest yield
+    # 1. Filter dict based on user input
+    # 2. Sort dict by highest yield
     projectsDict = filter(
         lambda elem: elem[1]["asset"] == ASSET_INPUT.upper(),
         sorted(
